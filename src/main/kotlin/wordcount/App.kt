@@ -4,19 +4,23 @@ import java.io.InputStream
 import java.io.OutputStream
 
 class App(
-    private val inStream: InputStream,
+    private val inStream: InputStream?,
     private val outStream: OutputStream
 ) {
-    fun run() {
-        val inputText = inStream
-            .bufferedReader()
-            .use { br -> br.readLine() }
-
-        val count = WordCounter.countWords(inputText, StopwordsReader.getStopWords())
+    fun run(programArgs: Array<String>) {
+        val inputTextProvider:InputTextProvider = createInputTextProvider(programArgs)
+        val count = WordCounter.countWords(inputTextProvider.getText(), StopwordsReader.getStopWords())
 
         outStream
             .bufferedWriter()
             .use { bw -> bw.write(count.toString()) }
     }
 
+    private fun createInputTextProvider(programArgs: Array<String>): InputTextProvider {
+        return if (programArgs.isNotEmpty()) {
+            FileTextProvider(programArgs[0])
+        } else {
+            InputStreamSingleLineTextProvider(inStream ?: throw IllegalStateException("Input stream cannot be null if programm arguments are not provided"))
+        }
+    }
 }
