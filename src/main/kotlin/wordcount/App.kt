@@ -13,8 +13,10 @@ class App(
 
         outStream
             .bufferedWriter()
-            .use { bw -> bw.write(count.toString()) }
+            .use { bw -> bw.write(outputString(count)) }
     }
+
+    private fun outputString(result: WordCountResult) = "Number of words: ${result.numWords}, unique: ${result.unique}"
 
     private fun createInputTextProvider(programArgs: Array<String>): InputTextProvider {
         return if (programArgs.isNotEmpty()) {
