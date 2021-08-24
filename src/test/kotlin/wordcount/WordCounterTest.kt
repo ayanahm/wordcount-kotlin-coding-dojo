@@ -1,4 +1,4 @@
-package com.erstegroup.wordcount
+package wordcount
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest

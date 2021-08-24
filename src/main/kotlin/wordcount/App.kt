@@ -1,4 +1,4 @@
-package com.erstegroup.wordcount
+package wordcount
 
 import java.io.InputStream
 import java.io.OutputStream

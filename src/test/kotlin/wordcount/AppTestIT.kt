@@ -1,6 +1,7 @@
-package com.erstegroup.wordcount
+package wordcount
 
-import org.junit.jupiter.api.Assertions.assertEquals
+import wordcount.App
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import java.io.ByteArrayOutputStream
 
@@ -17,6 +18,6 @@ class AppTestIT {
         app.run()
 
         val actualOutput = outputBuffer.toString()
-        assertEquals("5", actualOutput)
+        Assertions.assertEquals("5", actualOutput)
     }
 }

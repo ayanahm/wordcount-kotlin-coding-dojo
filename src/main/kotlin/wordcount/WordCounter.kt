@@ -1,4 +1,4 @@
-package com.erstegroup.wordcount
+package wordcount
 
 import java.util.regex.Pattern
 
