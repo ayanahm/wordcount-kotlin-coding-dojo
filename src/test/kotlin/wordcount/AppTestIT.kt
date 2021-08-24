@@ -1,6 +1,5 @@
 package wordcount
 
-import wordcount.App
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import java.io.ByteArrayOutputStream
@@ -18,6 +17,6 @@ class AppTestIT {
         app.run()
 
         val actualOutput = outputBuffer.toString()
-        Assertions.assertEquals("5", actualOutput)
+        Assertions.assertEquals("4", actualOutput)
     }
 }

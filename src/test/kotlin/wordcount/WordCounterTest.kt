@@ -17,8 +17,24 @@ internal class WordCounterTest {
     fun countsNumberOfWordsInATextLine(input: String?, expected: Int) {
         val nonNullInput = input ?: ""
 
-        val actual = WordCounter.countWords(nonNullInput)
+        val actual = WordCounter.countWords(nonNullInput, emptyList())
 
         assertEquals(expected, actual)
     }
+
+    @ParameterizedTest
+    @CsvSource(
+        "Mary had a little lamb, 4",
+        "Mary, 1",
+        " , 0",
+        "a a a off off, 0",
+    )
+    fun countsNumberOfWordsExcludingStopWords(input: String?, expected: Int) {
+        val nonNullInput = input ?: ""
+
+        val actual = WordCounter.countWords(nonNullInput, StopwordsReader.getStopWords())
+
+        assertEquals(expected, actual)
+    }
+
 }

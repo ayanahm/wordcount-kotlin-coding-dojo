@@ -12,7 +12,7 @@ class App(
             .bufferedReader()
             .use { br -> br.readLine() }
 
-        val count = WordCounter.countWords(inputText)
+        val count = WordCounter.countWords(inputText, StopwordsReader.getStopWords())
 
         outStream
             .bufferedWriter()

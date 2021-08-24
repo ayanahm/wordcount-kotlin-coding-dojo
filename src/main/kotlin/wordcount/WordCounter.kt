@@ -5,9 +5,11 @@ import java.util.regex.Pattern
 object WordCounter {
     private val regex = Pattern.compile("[a-zA-Z]+").toRegex()
 
-    fun countWords(text: String) : Int {
+    fun countWords(text: String, stopwords: List<String>): Int {
         val tokens = splitTextBySpace(text)
-        return tokens.count { isAWord(it) }
+        return tokens
+            .filter { w -> isAWord(w) }
+            .count { w -> w !in stopwords }
     }
 
     private fun isAWord(text: String): Boolean {
