@@ -1,0 +1,9 @@
+*.iml
+*.swp
+*.class
+.idea/
+target/
+.settings
+.project
+.classpath
+maven-wrapper.jar
